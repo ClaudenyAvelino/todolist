@@ -3,6 +3,7 @@ package br.com.claudeny.todolist.filter;
 import java.io.IOException;
 import java.util.Base64;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -17,6 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class FilterTaskAuth extends OncePerRequestFilter {
 
+  @Autowired
   private IUserRepository userRepository;
 
   @Override
@@ -27,6 +29,7 @@ public class FilterTaskAuth extends OncePerRequestFilter {
 
     if (servletPath.equals("/tasks/")) {
 
+      // take auth (user and password) 
       var autorization = request.getHeader("Authorization");
 
       var authEncoded = autorization.substring("Basic".length()).trim();
@@ -34,16 +37,18 @@ public class FilterTaskAuth extends OncePerRequestFilter {
       byte[] authDecode = Base64.getDecoder().decode(authEncoded);
 
       var authString = new String(authDecode);
+
       // ["claudeny," 12345]
       String[] credentials = authString.split(":");
       String username = credentials[0];
       String password = credentials[1];
       System.out.println(username);
       System.out.println(password);
+
       // validar usuario
       var user = this.userRepository.findByUsername(username);
       if (user == null) {
-        response.sendError(401);
+        response.sendError(401, "Usuário sem Autorização");
       } else {
         // validar senha
         var passwordVerify = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
@@ -53,7 +58,6 @@ public class FilterTaskAuth extends OncePerRequestFilter {
           response.sendError(401);
         }
         // segue viagem
-        // filterChain.doFilter(request, response);
 
       }
 

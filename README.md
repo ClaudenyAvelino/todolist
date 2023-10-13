@@ -7,5 +7,6 @@
 **Implementando segurança nos dados do usuário
 
 
-** Listar Tarefas
+* Listar Tarefas
+
 ![Alt text](/src/img/image.png)

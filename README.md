@@ -9,7 +9,7 @@ post
     "username": "claudenynivaldoAvelino",
     "password": "12345"
 }
-
+![Alt text](/src/img/image.png)
 * criar tarefa
 post
 (http://localhost:8080/tasks/)
@@ -21,6 +21,8 @@ post
     "endAt":"2023-10-14T16:35:00",
     "idUser": "248acd35-79bb-418a-be08-e29378b48e50"
 }
+
+![Alt text](/src/img/image1.png)
 
 *Editar tarefas
 post
@@ -45,4 +47,3 @@ post
 * Listar Tarefas
 
 
-![Alt text](/src/img/image.png)

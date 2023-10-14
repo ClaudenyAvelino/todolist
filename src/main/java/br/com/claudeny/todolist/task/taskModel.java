@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import jakarta.el.ELException;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,6 +32,11 @@ public class taskModel {
      @CreationTimestamp
     private LocalDateTime createdAt;
    
-    
+    public void setTitle(String title) throws ELException{
+       if (title.length() > 50) {
+        throw new ELException("O campo title deve ter no maximo 50 caracteres ");
+       }
+        this.title = title;
+    }
     
 }

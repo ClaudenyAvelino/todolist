@@ -3,7 +3,7 @@
 
 * criar usuario
 post
-(http://127.0.0.1:8080/users/)
+(https://todolist-rocket-7ljr.onrender.com/users/)
 {
     "name": "Claudeny Nivaldo",
     "username": "claudenynivaldoAvelino",
@@ -12,7 +12,7 @@ post
 ![Alt text](/src/img/image.png)
 * criar tarefa
 post
-(http://localhost:8080/tasks/)
+(https://todolist-rocket-7ljr.onrender.com/tasks/)
 {    
     "description": "Tarefa para gravar aula de task do Curso de Spring Boot",
     "title": "Gravação de aula",
@@ -26,7 +26,7 @@ post
 
 *Editar tarefas
 post
-(http://localhost:8080/tasks/7cefc7a8-93bc-4874-9f7a-a38a3176fafe)
+(https://todolist-rocket-7ljr.onrender.com/tasks/7cefc7a8-93bc-4874-9f7a-a38a3176fafe)
 
 {    
     "title": "Gravação de aula1"
